@@ -89,12 +89,13 @@ button:hover {
 
 
 .switch a {
-    color: rgb(0, 255, 149);
+    color: rgb(3, 245, 124);
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
 }
 
 
 .switch a:hover{
-    color: #0066ff;
+    color: #3464e7;
 }
