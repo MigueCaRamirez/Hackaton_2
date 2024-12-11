@@ -67,8 +67,8 @@ function checkSession() {
         const user = JSON.parse(session);
         alert(`Sesión activa: Bienvenido, ${user.fullname}`);
         
-        // Opcional: Podrías redirigir al usuario a otra página si lo prefieres
-        document.body.innerHTML = `<a>Bienvenido, ${user.fullname}</h1>`;
+        window.location.href = 'index.html';
+
     }
 }
 
