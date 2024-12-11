@@ -5,11 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Planificador de Cultivos Interactivo</title>
     <link rel="stylesheet" href="aspecto/css/Calendario.css">
+    <link rel="stylesheet" href="aspecto/css/styles.css">
 </head>
 <body>
     <header>
-        <h1>Planificador de Cultivos Interactivo</h1>
+        <h1>Planificador de cultivos</h1>
     </header>
+
+    <nav>
+        <a href="index.html">Tecnologías</a>
+        <a href="#beneficios">Acerca de nosotros</a>
+        <a href="referencias.html">Referencias</a>
+        <a href="Calendario.html">Planificador de cultivos</a>
+        <div id="user-menu" style="position: relative; display: inline-block;">
+            <a href="Registro.html" id="login-link">Iniciar sesión</a>
+            <div id="dropdown-menu" style="display: none; 
+            position: absolute; 
+            background: #fff; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            padding: 10px; 
+            z-index: 9999;">
+                <p id="username" style="color: black; margin: 0;"></p>
+                <button onclick="logout()" style="width: 100%; margin-top: 10px;">Cerrar sesión</button>
+            </div>
+        </div>
+        
+    </nav>
+
     <main>
         <section id="gestionar-cultivos">
             <h2>Gestión de Cultivos</h2>
@@ -61,5 +84,56 @@
     </main>
 
     <script src="aspecto/Js/Calendario.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const formCultivos = document.getElementById('form-cultivos');
+    const session = localStorage.getItem('session');
+    const loginLink = document.getElementById('login-link');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const usernameDisplay = document.getElementById('username');
+
+    if (session) {
+        // Si la sesión existe
+        const user = JSON.parse(session);
+
+        // Mostrar nombre del usuario
+        loginLink.textContent = `Bienvenido, ${user.fullname}`;
+        loginLink.href = "javascript:void(0)";
+        usernameDisplay.textContent = user.fullname;
+
+        // Mostrar formulario
+        formCultivos.style.display = 'block';
+
+        // Dropdown para cerrar sesión
+        loginLink.onclick = () => {
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        };
+    } else {
+        // Si no hay sesión
+        formCultivos.style.display = 'none'; // Ocultar formulario
+
+        loginLink.textContent = "Iniciar sesión";
+        loginLink.href = "Registro.html";
+
+        formCultivos.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Debes iniciar sesión para agregar registros.");
+            window.location.href = "Registro.html"; // Redirigir al login
+        });
+    }
+});
+
+// Función para cerrar sesión
+function logout() {
+    localStorage.removeItem('session');
+    alert("Sesión cerrada.");
+    window.location.reload();
+}
+
+const formCultivos = document.getElementById('form-cultivos');
+
+
+
+    </script>
 </body>
 </html>
