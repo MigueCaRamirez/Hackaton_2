@@ -67,7 +67,6 @@ nav a:hover {
     justify-content: center;
     gap: 2rem;
 }
-
 .card {
     background: white;
     border-radius: 10px;
@@ -83,9 +82,10 @@ nav a:hover {
 }
 
 .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: 100%;          /* Se ajusta al 100% del ancho del contenedor */
+    height: auto;         /* La altura se ajusta proporcionalmente */
+    object-fit: cover;    /* Cubre el área sin distorsionar la imagen */
+    max-height: 200px;    /* Establece una altura máxima para evitar que se desborde */
 }
 
 .card h3 {
@@ -97,6 +97,7 @@ nav a:hover {
     padding: 0 1rem 1rem;
     color: #666;
 }
+
 
 footer {
     background: #1d3557;
