@@ -1,35 +1,51 @@
 body {
-    font-family: 'Poppins', sans-serif;
     margin: 0;
-    background-color: #f1f1f1;
-    color: #333;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #a8dadc, #457b9d);
+    color: #2a2a2a;
+    line-height: 1.6;
 }
 
+/* Estilo para el header */
 header {
-    background: #457b9d;
-    color: #fff;
+    background: rgba(29, 53, 87, 0.8); /* Fondo semitransparente */
+    color: #f1faee;
+    padding: 1rem 2rem;
     text-align: center;
-    padding: 2rem 0;
+    position: relative;
+    z-index: 10;
 }
 
 header h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
 }
 
+/* Estilo para el menú de navegación */
 nav {
     display: flex;
     justify-content: center;
-    background: #2a2a2a;
-    padding: 1rem;
+    background: #457b9d;
+    padding: 1rem 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
-    color: #fff;
+    margin: 0 1.5rem;
+    color: #f1faee;
     text-decoration: none;
-    margin: 0 1rem;
-    font-size: 1.1rem;
     font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #FFCC00; /* Color de hover */
+    text-decoration: underline;
 }
 
 nav a:hover {
