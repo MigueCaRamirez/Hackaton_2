@@ -26,7 +26,11 @@ main {
     justify-content: space-around;
     flex-wrap: wrap;
 }
+#calculo{
+text-align: center;
+margin-top: 40px;
 
+}
 /* Sección de gestión de cultivos */
 #gestionar-cultivos {
     background: #fff;
@@ -85,11 +89,190 @@ main {
     border-radius: 5px;
     cursor: pointer;
 }
-
+.cosecha {
+    background-color: orange; /* Color de fondo naranja */
+    color: white; /* Texto blanco */
+}
 #navegacion-calendario span {
     font-size: 18px;
     font-weight: bold;
     margin: 0 15px;
+}
+/* Estilos Generales para el Formulario de Exportación */
+#formulario-exportacion {
+    width: 80%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+#titulo-exportacion {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Etiquetas de los campos */
+#label-cultivos,
+#label-fecha-inicio,
+#label-fecha-fin {
+    font-weight: bold;
+    color: #34495e;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+/* Estilo para el selector múltiple de cultivos */
+#cultivosSeleccionados {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    height: 150px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+/* Estilo para los campos de fecha */
+#fechaInicio,
+#fechaFin {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+/* Estilo cuando los campos están enfocados */
+#fechaInicio:focus,
+#fechaFin:focus,
+#cultivosSeleccionados:focus {
+    outline: none;
+    border-color: #3498db;
+    background-color: #fff;
+}
+
+/* Estilo para los botones de exportación */
+#btn-exportar-csv,
+#btn-exportar-pdf {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+/* Estilo cuando el ratón pasa sobre el botón */
+#btn-exportar-csv:hover,
+#btn-exportar-pdf:hover {
+    background-color: #2980b9;
+}
+
+/* Estilo para los mensajes de alerta o notificación */
+.alerta {
+    color: #e74c3c;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Espaciado entre los botones */
+#btn-exportar-csv:not(:last-child),
+#btn-exportar-pdf:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+/* Estilo para la sección de selección de cultivos y fechas */
+#cultivosSeleccionados,
+#fechaInicio,
+#fechaFin {
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Añadir espacio entre las secciones de filtros */
+#titulo-exportacion {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Bordes y sombreado para las secciones */
+#formulario-exportacion {
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 600px) {
+    #formulario-exportacion {
+        width: 90%;
+    }
+
+    #btn-exportar-csv,
+    #btn-exportar-pdf {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    #cultivosSeleccionados,
+    #fechaInicio,
+    #fechaFin {
+        width: 100%;
+    }
+}
+
+#resumen-areas {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#resumen-areas h3 {
+    color: #333;
+    font-size: 1.2em;
+}
+#graficoResumen {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#resumen-areas p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+#resumen-areas span {
+    font-weight: bold;
+    color: #2d7f00; /* Verde para resaltar las áreas */
+}
+
+#resumen-areas .sembrada {
+    color: #16a085; /* Color verde para el área sembrada */
+}
+
+#resumen-areas .por-sembrar {
+    color: #e67e22; /* Color naranja para el área por sembrar */
 }
 
 #tabla-calendario {
