@@ -1,8 +1,10 @@
+/* Estilos generales */
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(120deg, #a8dadc, #457b9d);
     color: #1d3557;
+    line-height: 1.6;
 }
 
 header {
@@ -11,21 +13,24 @@ header {
     padding: 1.5rem 2rem;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-header a{
+header a {
     text-decoration: none;
     color: white;
-
 }
 
 header h1 {
     font-size: 2.8rem;
     margin: 0;
     letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
+/* Menú de navegación */
 nav {
     display: flex;
     justify-content: center;
@@ -38,18 +43,54 @@ nav a {
     color: #f1faee;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover {
     color: #a8dadc;
     text-decoration: underline;
+    transform: scale(1.1);
+}
+
+/* Sección hero */
+.hero {
+    text-align: center;
+    padding: 5rem 2rem;
+    background: url('aspecto/img/dron1.png') no-repeat center center;
+    background-size: cover;
+    color: white;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Filtro oscuro para mejorar el contraste */
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    z-index: 2;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    z-index: 2;
 }
 
 /* Sección de Referencias */
 #referencias {
     padding: 4rem 2rem;
     text-align: center;
+    background: #f1faee;
 }
 
 #referencias h2 {
@@ -60,43 +101,27 @@ nav a:hover {
     letter-spacing: 1px;
 }
 
-.hero {
-    text-align: center;
-    padding: 4rem 2rem;
-    background: url('aspecto/img/dron1.png') no-repeat center center;
-    background-size: cover;
-    color: white;
-    min-height: 400px; /* Ajusta según lo necesario */
-}
-
-
-
-
-.hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-}
-
+/* Sección de Tecnologías y Cultivos */
 .section {
     padding: 3rem 2rem;
 }
 
 .section h2 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-bottom: 1.5rem;
+    color: #1d3557;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-
+/* Tarjetas */
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2.5rem;
+    margin-top: 3rem;
 }
 
 .card {
@@ -224,6 +249,7 @@ form button:hover {
     background-color: #1d3557;
 }
 
+/* Footer */
 footer {
     background: #1d3557;
     color: #f1faee;
@@ -234,4 +260,35 @@ footer {
 footer p {
     margin: 0;
     font-size: 1rem;
+}
+
+/* Fondo con capa oscura */
+#background-container {
+    position: relative;
+    background-image: url('aspecto/img/campos.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.img {
+    transition: background-image 1s ease-in-out;
+}
+
+/* Capa oscura */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Oscurecer con 50% de opacidad */
+    z-index: 1;
+}
+
+.hero, .section {
+    position: relative;
+    z-index: 2;
 }

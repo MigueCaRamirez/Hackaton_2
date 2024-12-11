@@ -105,3 +105,22 @@ a{
     color: white;
 
 }
+
+.back-button {
+    display: inline-block;           /* Para que se comporte como un bloque (como el botón) */
+    width: 100%;                     /* Esto hace que el enlace ocupe todo el ancho disponible, igual que el botón */
+    padding: 10px 20px;              /* Asegura que el texto esté bien espaciado */
+    background-color: #151c74;       /* Mismo color de fondo que el botón */
+    color: white;                    /* Texto blanco */
+    text-decoration: none;           /* Elimina el subrayado */
+    font-weight: bold;               /* Texto en negrita */
+    border-radius: 5px;              /* Bordes redondeados */
+    text-align: center;              /* Centra el texto */
+    box-sizing: border-box;          /* Asegura que el padding no afecte el tamaño total */
+    margin-top: 10px;                /* Espacio superior */
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background-color: #249784;       /* Cambio de color al pasar el mouse */
+}
