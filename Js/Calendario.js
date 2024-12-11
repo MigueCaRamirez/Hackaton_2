@@ -15,7 +15,6 @@ mostrarCalendario(fechaActual);
 // Manejar envío del formulario
 formCultivos.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const nombre = document.getElementById('nombre-cultivo').value;
     const area = document.getElementById('area').value;
     const fechaSiembra = document.getElementById('fecha-siembra').value;
@@ -24,27 +23,53 @@ formCultivos.addEventListener('submit', (e) => {
         const nuevoCultivo = { nombre, area, fechaSiembra };
         cultivos.push(nuevoCultivo);
         localStorage.setItem('cultivos', JSON.stringify(cultivos));
-        actualizarListaCultivos();
+        actualizarListaCultivos(); // Actualiza lista y calendario
         formCultivos.reset();
     }
 });
 
-// Actualizar la lista de cultivos
+// Actualizar la lista de cultivos y calendario
 function actualizarListaCultivos() {
-    listaCultivos.innerHTML = '';
+    const cuerpoTablaCultivos = document.getElementById('cuerpo-tabla-cultivos');
+    cuerpoTablaCultivos.innerHTML = ''; // Limpiar la tabla antes de agregar los cultivos
+
     cultivos.forEach((cultivo, index) => {
-        const li = document.createElement('li');
-        li.innerHTML = `${cultivo.nombre} - Área: ${cultivo.area}m² - Siembra: ${cultivo.fechaSiembra} 
-            <button onclick="eliminarCultivo(${index})">Eliminar</button>`;
-        listaCultivos.appendChild(li);
+        const fila = document.createElement('tr');
+        
+        // Crear celdas para cada dato del cultivo
+        const celdaNombre = document.createElement('td');
+        celdaNombre.textContent = cultivo.nombre;
+        
+        const celdaArea = document.createElement('td');
+        celdaArea.textContent = cultivo.area;
+        
+        const celdaFechaSiembra = document.createElement('td');
+        celdaFechaSiembra.textContent = cultivo.fechaSiembra;
+        
+        const celdaAcciones = document.createElement('td');
+        const botonEliminar = document.createElement('button');
+        botonEliminar.textContent = 'Eliminar';
+        botonEliminar.onclick = () => eliminarCultivo(index); // Función eliminar cultivo
+        celdaAcciones.appendChild(botonEliminar);
+        
+        // Añadir las celdas a la fila
+        fila.appendChild(celdaNombre);
+        fila.appendChild(celdaArea);
+        fila.appendChild(celdaFechaSiembra);
+        fila.appendChild(celdaAcciones);
+        
+        // Añadir la fila a la tabla
+        cuerpoTablaCultivos.appendChild(fila);
     });
+
+    mostrarCalendario(fechaActual); // Actualiza el calendario
 }
 
 // Eliminar cultivo
 function eliminarCultivo(index) {
     cultivos.splice(index, 1);
     localStorage.setItem('cultivos', JSON.stringify(cultivos));
-    actualizarListaCultivos();
+    actualizarListaCultivos(); // Actualiza lista y calendario
 }
 
 // Mostrar calendario
@@ -55,11 +80,10 @@ function mostrarCalendario(fecha) {
 
     const primerDia = new Date(anio, mes, 1);
     const ultimoDia = new Date(anio, mes + 1, 0);
-
     tablaCalendario.innerHTML = '';
+
     let diaSemana = primerDia.getDay();
     let fila = document.createElement('tr');
-
     for (let i = 0; i < diaSemana; i++) {
         fila.appendChild(document.createElement('td'));
     }
@@ -97,5 +121,5 @@ document.getElementById('mes-siguiente').addEventListener('click', () => {
 // Mostrar detalles de un día
 function mostrarDetallesDia(fecha) {
     const eventos = cultivos.filter(c => c.fechaSiembra === fecha);
-    alert(`Eventos para el ${fecha}:\n` + (eventos.length ? eventos.map(e => `${e.nombre} - Área: ${e.area}m²`).join('\n') : 'Sin eventos')); 
+    alert(`Eventos para el ${fecha}:\n` + (eventos.length ? eventos.map(e => `${e.nombre}  Área: ${e.area}m²`).join('\n') : 'Sin eventos'));
 }
