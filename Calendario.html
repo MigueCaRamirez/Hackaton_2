@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="aspecto/css/Calendario.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-</head>
+
 <body>
     <header>
         <h1>Planificador de Cultivos Interactivo</h1>
@@ -19,93 +19,89 @@
         </nav>
         
     </header>
-        <main>
-            <section id="gestionar-cultivos" class="flex">
-                <h2>Gestión de Cultivos</h2>
-                <form id="form-cultivos">
-                    <label for="nombre-cultivo">Nombre del Cultivo:</label>
-                    <input type="text" id="nombre-cultivo" required>
-                    <label for="area">Área a Sembrar (m²):</label>
-                    <input type="number" id="area" min="1" required>
-                    <label for="fecha-siembra">Fecha de Siembra:</label>
-                    <input type="date" id="fecha-siembra" required>
-                    <label for="duracion-ciclo">Duración del Ciclo (días):</label>
-                    <input type="number" id="duracion-ciclo" min="1" required>
-                    <button type="submit">Agregar Cultivo</button>
-                </form>
-                <h3>Lista de Cultivos</h3>
-                <table id="tabla-cultivos">
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Área (m²)</th>
-                            <th>Fecha de Siembra</th>
-                            <th>Fecha de Cosecha</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cuerpo-tabla-cultivos">
-                        <!-- Filas generadas dinámicamente -->
-                    </tbody>
-                </table>
-            </section>
-    
-            <section id="calendario" class="flex">
-                <h2>Calendario Interactivo</h2>
-                <div id="navegacion-calendario">
-                    <button id="mes-anterior">&#8249;</button>
-                    <span id="mes-actual"></span>
-                    <button id="mes-siguiente">&#8250;</button>
-                </div>
-                <table id="tabla-calendario">
-                    <thead>
-                        <tr>
-                            <th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th>
-                            <th>Jue</th><th>Vie</th><th>Sáb</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dias-calendario"></tbody>
-                </table>
-            </section>
-           
-        </main>
-        <div id="resumen-areas">
-            <h3>Resumen de Áreas(m²) utilizadas o por utilizar</h3>
-            <p><strong>Total de área a sembrar o sembrada:</strong> <span id="total-area"></span> </p>
-            <p><strong>Área sembrada:</strong> <span id="area-sembrada"></span> </p>
-            <p><strong>Área por sembrar:</strong> <span id="area-por-sembrar"></span> </p>
-        </div>
-        <div>
-            <h2 style="text-align: center; margin-top: 20px;">Grafico de Areas</h2>
-            <canvas id="graficoResumen"> </canvas>
-        </div>
-        <div id="formulario-exportacion">
-            <!-- Filtros de Exportación -->
-            <h3 id="titulo-exportacion">Personaliza tu Exportación</h3>
-        
-            <!-- Selección de Cultivos -->
-            <label for="cultivosSeleccionados" id="label-cultivos">Selecciona Cultivos:</label><br>
-            <select id="cultivosSeleccionados" multiple size="5">
-            <!-- Se llenará con los cultivos disponibles -->
-            </select><br><br>
-        
-            <!-- Rango de Fechas -->
-            <label for="fechaInicio" id="label-fecha-inicio">Fecha de Inicio:</label>
-            <input type="date" id="fechaInicio"><br><br>
-        
-            <label for="fechaFin" id="label-fecha-fin">Fecha de Fin:</label>
-            <input type="date" id="fechaFin"><br><br>
-        
-            <!-- Botones para exportar -->
-            <button id="btn-exportar-csv" onclick="exportarCSV()">Exportar a CSV</button>
-            <button id="btn-exportar-pdf" onclick="exportarPDF()">Exportar a PDF</button>
-        </div>
-        
-    
-    <footer>
-        <p>&copy; 2024 Transformación Digital en el Agro. Todos los derechos reservados.</p>
-    </footer>
+    <main>
+        <section id="gestionar-cultivos" class="flex">
+            <h2>Gestión de Cultivos</h2>
+            <form id="form-cultivos">
+                <label for="nombre-cultivo">Nombre del Cultivo:</label>
+                <input type="text" id="nombre-cultivo" required>
+                <label for="area">Área a Sembrar (m²):</label>
+                <input type="number" id="area" min="1" required>
+                <label for="fecha-siembra">Fecha de Siembra:</label>
+                <input type="date" id="fecha-siembra" required>
+                <label for="duracion-ciclo">Duración del Ciclo (días):</label>
+                <input type="number" id="duracion-ciclo" min="1" required>
+                <button type="submit">Agregar Cultivo</button>
+            </form>
+            <h3>Lista de Cultivos</h3>
+            <table id="tabla-cultivos">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Área (m²)</th>
+                        <th>Fecha de Siembra</th>
+                        <th>Fecha de Cosecha</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpo-tabla-cultivos">
+                    <!-- Filas generadas dinámicamente -->
+                </tbody>
+            </table>
+        </section>
 
+        <section id="calendario" class="flex">
+            <h2>Calendario Interactivo</h2>
+            <div id="navegacion-calendario">
+                <button id="mes-anterior">&#8249;</button>
+                <span id="mes-actual"></span>
+                <button id="mes-siguiente">&#8250;</button>
+            </div>
+            <table id="tabla-calendario">
+                <thead>
+                    <tr>
+                        <th>Dom</th><th>Lun</th><th>Mar</th><th>Mié</th>
+                        <th>Jue</th><th>Vie</th><th>Sáb</th>
+                    </tr>
+                </thead>
+                <tbody id="dias-calendario"></tbody>
+            </table>
+        </section>
+       
+    </main>
+    <div id="resumen-areas">
+        <h3>Resumen de Áreas(m²) utilizadas o por utilizar</h3>
+        <p><strong>Total de área a sembrar o sembrada:</strong> <span id="total-area"></span> </p>
+        <p><strong>Área sembrada:</strong> <span id="area-sembrada"></span> </p>
+        <p><strong>Área por sembrar:</strong> <span id="area-por-sembrar"></span> </p>
+    </div>
+    <div>
+        <h2 style="text-align: center; margin-top: 20px;">Grafico de Areas</h2>
+        <canvas id="graficoResumen"> </canvas>
+    </div>
+    <div id="formulario-exportacion">
+        <!-- Filtros de Exportación -->
+        <h3 id="titulo-exportacion">Personaliza tu Exportación</h3>
+    
+        <!-- Selección de Cultivos -->
+        <label for="cultivosSeleccionados" id="label-cultivos">Selecciona Cultivos:</label><br>
+        <select id="cultivosSeleccionados" multiple size="5">
+        <!-- Se llenará con los cultivos disponibles -->
+        </select><br><br>
+    
+        <!-- Rango de Fechas -->
+        <label for="fechaInicio" id="label-fecha-inicio">Fecha de Inicio:</label>
+        <input type="date" id="fechaInicio"><br><br>
+    
+        <label for="fechaFin" id="label-fecha-fin">Fecha de Fin:</label>
+        <input type="date" id="fechaFin"><br><br>
+    
+        <!-- Botones para exportar -->
+        <button id="btn-exportar-csv" onclick="exportarCSV()">Exportar a CSV</button>
+        <button id="btn-exportar-pdf" onclick="exportarPDF()">Exportar a PDF</button>
+    </div>
+    
     <script src="aspecto/Js/Calendario.js"></script>
+   
 </body>
 </html>
