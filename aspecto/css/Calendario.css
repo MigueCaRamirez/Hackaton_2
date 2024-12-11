@@ -212,6 +212,11 @@ img {
     cursor: pointer;
 }
 
+.cosecha {
+    background-color: orange; /* Color de fondo naranja */
+    color: white; /* Texto blanco */
+}
+
 #tabla-cultivos td button:hover {
     background: #b71c1c;
 }

@@ -20,6 +20,8 @@
                 <input type="number" id="area" min="1" required>
                 <label for="fecha-siembra">Fecha de Siembra:</label>
                 <input type="date" id="fecha-siembra" required>
+                <label for="duracion-ciclo">Duración del Ciclo (días):</label>
+                <input type="number" id="duracion-ciclo" min="1" required>
                 <button type="submit">Agregar Cultivo</button>
             </form>
             <h3>Lista de Cultivos</h3>
@@ -30,11 +32,13 @@
                         <th>Nombre</th>
                         <th>Área (m²)</th>
                         <th>Fecha de Siembra</th>
+                        <th>Fecha de Cosecha</th> <!-- Nueva columna -->
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="cuerpo-tabla-cultivos"></tbody>
             </table>
+            
         </section>
 
         <section id="calendario">
