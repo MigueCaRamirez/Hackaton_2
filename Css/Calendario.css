@@ -1,0 +1,112 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    padding: 20px;
+    color: #333;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+main {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+/* Sección de gestión de cultivos */
+#gestionar-cultivos {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 40%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#form-cultivos label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+#form-cultivos input {
+    width: calc(100% - 10px);
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#form-cultivos button {
+    background: #2c3e50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#form-cultivos button:hover {
+    background: #34495e;
+}
+
+#lista-cultivos {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+/* Sección de calendario */
+#calendario {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#navegacion-calendario button {
+    background: #2c3e50;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#navegacion-calendario span {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+#tabla-calendario {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+#tabla-calendario th, #tabla-calendario td {
+    width: 14.28%;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+#tabla-calendario td.evento {
+    background: #2ecc71;
+    color: white;
+    font-weight: bold;
+}
