@@ -99,3 +99,9 @@ button:hover {
 .switch a:hover{
     color: #3464e7;
 }
+
+a{
+    text-decoration: none;
+    color: white;
+
+}
