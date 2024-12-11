@@ -15,20 +15,41 @@ mostrarCalendario(fechaActual);
 // Manejar envío del formulario
 formCultivos.addEventListener('submit', (e) => {
     e.preventDefault();
+    
     const nombre = document.getElementById('nombre-cultivo').value;
     const area = document.getElementById('area').value;
     const fechaSiembra = document.getElementById('fecha-siembra').value;
+    const duracionCiclo = document.getElementById('duracion-ciclo') ? document.getElementById('duracion-ciclo').value : 0; // Duración del ciclo (días)
 
-    if (nombre && area > 0 && fechaSiembra) {
-        const nuevoCultivo = { nombre, area, fechaSiembra };
+    if (nombre && area > 0 && fechaSiembra && (duracionCiclo > 0 || duracionCiclo === 0)) {
+        // Si hay duración de ciclo, calcular fecha de cosecha
+        const fechaCosecha = duracionCiclo > 0 ? calcularFechaCosecha(fechaSiembra, duracionCiclo) : null;
+
+        const nuevoCultivo = {
+            nombre,
+            area,
+            fechaSiembra,
+            duracionCiclo,
+            fechaCosecha
+        };
+
         cultivos.push(nuevoCultivo);
         localStorage.setItem('cultivos', JSON.stringify(cultivos));
-        actualizarListaCultivos(); // Actualiza lista y calendario
+        actualizarListaCultivos();
         formCultivos.reset();
+    } else {
+        alert('Por favor, completa todos los campos correctamente.');
     }
 });
 
-// Actualizar la lista de cultivos y calendario
+// Función para calcular la fecha de cosecha
+function calcularFechaCosecha(fechaSiembra, duracionCiclo) {
+    const fecha = new Date(fechaSiembra);
+    fecha.setDate(fecha.getDate() + parseInt(duracionCiclo));
+    return fecha.toISOString().split('T')[0]; // Devuelve la fecha en formato YYYY-MM-DD
+}
+
+// Actualizar la lista de cultivos
 function actualizarListaCultivos() {
     const cuerpoTablaCultivos = document.getElementById('cuerpo-tabla-cultivos');
     cuerpoTablaCultivos.innerHTML = ''; // Limpiar la tabla antes de agregar los cultivos
@@ -45,7 +66,11 @@ function actualizarListaCultivos() {
         
         const celdaFechaSiembra = document.createElement('td');
         celdaFechaSiembra.textContent = cultivo.fechaSiembra;
-        
+
+        // Nueva celda para la Fecha de Cosecha
+        const celdaFechaCosecha = document.createElement('td');
+        celdaFechaCosecha.textContent = cultivo.fechaCosecha ? cultivo.fechaCosecha : 'N/A'; // Mostrar "N/A" si no hay fecha de cosecha
+
         const celdaAcciones = document.createElement('td');
         const botonEliminar = document.createElement('button');
         botonEliminar.textContent = 'Eliminar';
@@ -56,6 +81,7 @@ function actualizarListaCultivos() {
         fila.appendChild(celdaNombre);
         fila.appendChild(celdaArea);
         fila.appendChild(celdaFechaSiembra);
+        fila.appendChild(celdaFechaCosecha); // Añadir celda de fecha de cosecha
         fila.appendChild(celdaAcciones);
         
         // Añadir la fila a la tabla
@@ -84,6 +110,7 @@ function mostrarCalendario(fecha) {
 
     let diaSemana = primerDia.getDay();
     let fila = document.createElement('tr');
+
     for (let i = 0; i < diaSemana; i++) {
         fila.appendChild(document.createElement('td'));
     }
@@ -91,13 +118,19 @@ function mostrarCalendario(fecha) {
     for (let dia = 1; dia <= ultimoDia.getDate(); dia++) {
         const celda = document.createElement('td');
         celda.textContent = dia;
-        const fechaActual = new Date(anio, mes, dia).toISOString().split('T')[0];
+        const fechaDia = new Date(anio, mes, dia).toISOString().split('T')[0];
 
-        if (cultivos.some(c => c.fechaSiembra === fechaActual)) {
+        // Resaltar la fecha de siembra
+        if (cultivos.some(c => c.fechaSiembra === fechaDia)) {
             celda.classList.add('evento');
         }
 
-        celda.addEventListener('click', () => mostrarDetallesDia(fechaActual));
+        // Resaltar la fecha de cosecha
+        if (cultivos.some(c => c.fechaCosecha === fechaDia)) {
+            celda.classList.add('cosecha');
+        }
+
+        celda.addEventListener('click', () => mostrarDetallesDia(fechaDia));
         fila.appendChild(celda);
 
         if ((diaSemana + dia) % 7 === 0 || dia === ultimoDia.getDate()) {
@@ -120,6 +153,26 @@ document.getElementById('mes-siguiente').addEventListener('click', () => {
 
 // Mostrar detalles de un día
 function mostrarDetallesDia(fecha) {
-    const eventos = cultivos.filter(c => c.fechaSiembra === fecha);
-    alert(`Eventos para el ${fecha}:\n` + (eventos.length ? eventos.map(e => `${e.nombre}  Área: ${e.area}m²`).join('\n') : 'Sin eventos'));
+    // Filtrar cultivos que tienen siembra o cosecha en la fecha seleccionada
+    const eventosSiembra = cultivos.filter(c => c.fechaSiembra === fecha);
+    const eventosCosecha = cultivos.filter(c => c.fechaCosecha === fecha);
+
+    let mensaje = `Eventos para el ${fecha}:\n`;
+
+    // Mostrar siembras
+    if (eventosSiembra.length > 0) {
+        mensaje += `Siembras:\n${eventosSiembra.map(e => `${e.nombre} - Área: ${e.area}m²`).join('\n')}\n`;
+    }
+
+    // Mostrar cosechas
+    if (eventosCosecha.length > 0) {
+        mensaje += `Cosechas:\n${eventosCosecha.map(e => `${e.nombre} - Área: ${e.area}m²`).join('\n')}\n`;
+    }
+
+    // Si no hay eventos
+    if (eventosSiembra.length === 0 && eventosCosecha.length === 0) {
+        mensaje += 'Sin eventos en esta fecha.\n';
+    }
+
+    alert(mensaje);
 }
