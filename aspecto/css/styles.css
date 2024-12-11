@@ -1,3 +1,4 @@
+/* Estilos generales */
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
@@ -5,6 +6,7 @@ body {
     color: #1d3557;
 }
 
+/* Estilo para el header */
 header {
     background: #1d3557;
     color: #f1faee;
@@ -17,6 +19,7 @@ header h1 {
     margin: 0;
 }
 
+/* Estilo para el menú de navegación */
 nav {
     display: flex;
     justify-content: center;
@@ -33,13 +36,28 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+    color: #FFCC00; /* Amarillo como color de hover */
 }
 
+/* Sección hero */
 .hero {
     text-align: center;
     padding: 4rem 2rem;
     background: url('https://source.unsplash.com/1600x900/?agriculture,technology') no-repeat center center/cover;
+    background-size: cover;
+    position: relative;
     color: white;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Filtro oscuro para mejorar el contraste */
+    z-index: -1;
 }
 
 .hero h2 {
@@ -51,6 +69,7 @@ nav a:hover {
     font-size: 1.2rem;
 }
 
+/* Estilos para secciones */
 .section {
     padding: 3rem 2rem;
 }
@@ -61,12 +80,14 @@ nav a:hover {
     margin-bottom: 1.5rem;
 }
 
+/* Estilos para las tarjetas */
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
 }
+
 .card {
     background: white;
     border-radius: 10px;
@@ -75,6 +96,7 @@ nav a:hover {
     overflow: hidden;
     text-align: center;
     transition: transform 0.3s;
+    border-left: 5px solid #af9d4c; /* Borde verde como acento */
 }
 
 .card:hover {
@@ -82,15 +104,16 @@ nav a:hover {
 }
 
 .card img {
-    width: 100%;          /* Se ajusta al 100% del ancho del contenedor */
-    height: auto;         /* La altura se ajusta proporcionalmente */
-    object-fit: cover;    /* Cubre el área sin distorsionar la imagen */
-    max-height: 200px;    /* Establece una altura máxima para evitar que se desborde */
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 200px;
 }
 
 .card h3 {
     font-size: 1.5rem;
     margin: 1rem 0;
+    color: #4CAF50; /* Título en verde */
 }
 
 .card p {
@@ -98,7 +121,7 @@ nav a:hover {
     color: #666;
 }
 
-
+/* Estilos para el footer */
 footer {
     background: #1d3557;
     color: #f1faee;
@@ -108,4 +131,31 @@ footer {
 
 footer p {
     margin: 0;
+}
+
+/* Estilos adicionales */
+button {
+    background-color: #4CAF50; /* Verde para botones */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #beac45; /* Verde más claro para el hover */
+}
+
+a {
+    color: #4CAF50; /* Enlaces en verde */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #FFCC00; /* Amarillo para enlaces al hacer hover */
+    text-decoration: underline;
 }

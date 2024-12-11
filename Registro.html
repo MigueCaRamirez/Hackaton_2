@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesión - Transformación Digital Agro</title>
-    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="aspecto/css/Registro.css">
 </head>
 <body>
+
+    
     <div class="container" id="login-container">
         <h1>Inicio de Sesión</h1>
         <form id="login-form">
@@ -19,11 +21,15 @@
                 <input type="password" id="password" name="password" placeholder="Ingresa tu contraseña" required>
             </div>
             <button type="submit">Iniciar Sesión</button>
+            <br>
+            <br>
+            <button type="submit" ><a href="index.html">Regresar</a></button>
         </form>
         <div class="switch">
-            ¿No tienes una cuenta? <a href="#" onclick="showRegister()">Regístrate</a>
+        ¿No tienes una cuenta? entonces <a href="#" onclick="showRegister()">Regístrate</a>
         </div>
     </div>
+    
 
     <div class="container" id="register-container" style="display: none;">
         <h1>Registro</h1>
@@ -41,12 +47,15 @@
                 <input type="password" id="password-register" name="password-register" placeholder="Crea una contraseña" required>
             </div>
             <button type="submit">Registrarse</button>
+            <br>
+            <br>
+            <button type="submit" ><a href="index.html">Regresar</a></button>
         </form>
         <div class="switch">
-            ¿Ya tienes una cuenta? <a href="#" onclick="showLogin()">Inicia sesión</a>
+             <a href="#" onclick="showLogin()">Inicia_sesión</a>
         </div>
     </div>
 
-    <script src="Js/script.js"></script>
+    <script src="aspecto/Js/Registro.js"></script>
 </body>
 </html>
